@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Distant key:</strong>
+  <%= @translation_request.distant_key %>
+</p>
+<p>
+  <strong>Completed:</strong>
+  <%= @translation_request.completed %>
+</p>
+<%= link_to 'Edit', edit_translation_request_path(@translation_request) %> |
+<%= link_to 'Back', translation_requests_path %>

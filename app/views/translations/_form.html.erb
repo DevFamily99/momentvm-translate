@@ -1,0 +1,28 @@
+<%= form_for @translation do |form| %>
+  <% if translation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(translation.errors.count, "error") %> prohibited this translation from being saved:</h2>
+
+      <ul>
+      <% translation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.simple_fields_for :body do |localization| %>
+    <% @translation.body.each_pair do |locale, locale_value| %>
+      <%= localization.input locale.to_sym, 
+        as: :text, 
+        input_html: { value: locale_value },
+        required: false
+      %>
+    <% end %>
+  <% end %>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
